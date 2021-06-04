@@ -1,0 +1,59 @@
+### Login
+POST http://localhost:8000/api/login
+content-type: application/json
+
+{
+    "email": "juan@gmail.com",
+    "password": "12345678"
+}
+
+### Logout
+POST http://localhost:8000/api/logout
+
+### create a patient
+POST http://localhost:8000/api/patient
+content-type: application/json
+
+{
+    "firstName": "Jose",
+    "lastName": "orellana",
+    "email": "jose@gmail.com",
+    "address": "Inca 399",
+    "dob": "05-12-1981",
+    "date_toma": "06-01-2021",
+    "date_recep": "20-02-2021",
+    "result": "22-02-2021",
+    "next_pap": "07-03-2022",
+    "createdBy": "60b98750b62e520720b57cb6"
+}
+
+### Add a PATIENT
+POST http://localhost:8000/api/patient
+content-type: application/json
+
+{
+    "content": "Bad movie",
+    "rating": 3,
+    "createdBy": "60ae68a24220412a08246ddc",
+    "movieId": "60ae68c94220412a08246ddd"
+}
+
+### Add a REVIEW
+POST http://localhost:8000/api/review
+content-type: application/json
+
+{
+    "content": "Bad movie",
+    "rating": 3,
+    "createdBy": "60ae68a24220412a08246ddc",
+    "movieId": "60ae68c94220412a08246ddd"
+}
+
+### Add a movie
+POST http://localhost:8000/api/movie
+content-type: application/json
+
+{
+    "title": "Brave Heart",
+    "rewiews": []
+}
