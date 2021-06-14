@@ -3,20 +3,9 @@ const { User } = require('../models/user.model')
 
 const newPatient = async (req, res) => {
     try {
-        const {
-            firstName,
-            lastName,
-            email,
-            address,
-            dob,
-            date_toma,
-            date_recep,
-            result,
-            next_pap,
-            createdBy,
-        } = req.body
-        console.log(req.body)
-        //const user = await User.findById(createdBy).exec()
+        const { firstName, lastName, email, address, dob, createdBy } = req.body
+       // console.log(req.body)
+
         const patient = Patient({
             createdBy: createdBy,
             firstName,
@@ -24,16 +13,8 @@ const newPatient = async (req, res) => {
             email,
             address,
             dob,
-            date_toma,
-            date_recep,
-            result,
-            next_pap,
         })
-        console.log({ patient })
         await patient.save()
-
-        // user.patients.push(patient)
-        //  await user.save()
 
         const userUpdate = await User.findByIdAndUpdate(
             createdBy,
@@ -41,11 +22,35 @@ const newPatient = async (req, res) => {
             { upsert: true, new: true },
         )
 
-        res.sendStatus(201)
+        console.log({ patient })
+        res.json(patient)
     } catch (err) {
         console.error(err)
-        res.sendStatus(500)
+        res.status(500).json(err)
     }
 }
 
-module.exports = { newPatient }
+const getAllPatients = async (req, res) => {
+    try {
+        const patients = await Patient.find({}).exec()
+        res.json(patients)
+    } catch (err) {
+        console.error(err)
+        res.status(500).json(err)
+    }
+}
+
+const getOnePatient = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const patient = await Patient.findById(
+            id,
+        ).exec();
+        res.json(patient);
+    } catch (e) {
+        console.error(e);
+        return { success: false, data: e.message };
+    }
+  };
+
+module.exports = { newPatient, getAllPatients, getOnePatient }

@@ -27,6 +27,45 @@ content-type: application/json
     "createdBy": "60b98750b62e520720b57cb6"
 }
 
+### create a patient 2
+POST http://localhost:8000/api/patient
+content-type: application/json
+
+{
+    "firstName": "Jose",
+    "lastName": "orellana",
+    "email": "jose@gmail.com",
+    "address": "Inca 399",
+    "dob": "05-12-1981",
+    "createdBy": "60b98750b62e520720b57cb6"
+}
+
+### create a PAP
+POST http://localhost:8000/api/pap
+content-type: application/json
+
+{
+    "date_taken": "05-01-2021",
+    "date_recep": "15-01-2021",
+    "result": "Todo bien",
+    "next_pap": "05-01-2022",
+    "midwifeId": "60b98750b62e520720b57cb6",
+    "patientId": "60bc13cba48dfb3f00bca9ce"
+}
+
+### create a PAP 2
+POST http://localhost:8000/api/pap
+content-type: application/json
+
+{
+    "date_taken": "05-01-2021",
+    "date_recep": "15-01-2021",
+    "result": "El resultado es bueno",
+    "next_pap": "2021-06-11T23:45:59.246Z",
+    "midwifeId": "60b98750b62e520720b57cb6",
+    "patientId": "60bc13bea48dfb3f00bca9cd"
+}
+
 ### Add a PATIENT
 POST http://localhost:8000/api/patient
 content-type: application/json
@@ -38,22 +77,35 @@ content-type: application/json
     "movieId": "60ae68c94220412a08246ddd"
 }
 
-### Add a REVIEW
-POST http://localhost:8000/api/review
+### GET ALL PATIENTS
+GET http://localhost:8000/api/patients
+
+### GET ONE PATIENT
+GET http://localhost:8000/api/patient/60bc13bea48dfb3f00bca9cd
+
+
+
+### GET ONE PAP
+GET http://localhost:8000/api/pap/60c4e1cdd9545e19d0011975
+
+
+
+
+### GET ALL PAPS
+GET http://localhost:8000/api/paps/60c4e0799a253f2a8c977cd1
+
+### DELETE A PAP
+DELETE http://localhost:8000/api/paps/60bc1afe3ea1f66928f342b6
+
+### Edit a pap
+PUT http://localhost:8000/api/paps/60c4c5fd60cb1b3ae87fa1a7
 content-type: application/json
 
 {
-    "content": "Bad movie",
-    "rating": 3,
-    "createdBy": "60ae68a24220412a08246ddc",
-    "movieId": "60ae68c94220412a08246ddd"
-}
-
-### Add a movie
-POST http://localhost:8000/api/movie
-content-type: application/json
-
-{
-    "title": "Brave Heart",
-    "rewiews": []
+    "date_taken": "05-01-2021",
+    "date_recep": "15-01-2021",
+    "result": "El resultado es bueno",
+    "next_pap": "2021-06-14T22:34:29-04:00",
+    "midwifeId": "60b98750b62e520720b57cb6",
+    "patientId": "60bc13cba48dfb3f00bca9ce"
 }

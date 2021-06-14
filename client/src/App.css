@@ -1,38 +1,90 @@
 .App {
-  text-align: center;
+    text-align: center;
+}
+
+.pap-form-style.ant-form {
+    margin-right: 20%;
+}
+
+.my-card .ant-card {
+margin: 5% 35%;
+
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
+.adopt-link {
+    display: flex;
+    justify-content: flex-start;
+    margin: 3%;
+}
+
+.action-btn.edit {
+    background-color: rgb(22, 137, 22);
+    margin-inline-end: 1rem;
+}
+
+.action-btn.details {
+    background-color: palegreen;
+    color: black;
+    margin-inline-end: 2rem;
+}
+
+.action-btn.add {
+    background-color: rgb(23, 116, 223);
+    color: white;
+}
+
+.table-style {
+    margin-top: 3%;
+}
+
+.action-btn {
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+}
+
+.header-style {
+    justify-content: flex-end;
+    align-items: center;
+    display: grid;
+    gap: 10%;
+    margin-right: 3%;
+}
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

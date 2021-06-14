@@ -1,6 +1,7 @@
 import React from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
+import {Button} from 'antd'
 
 const RegisterForm = (props) => {
     const { iFirstName, iLastName, iEmail, iPassword, iConfirm, onSubmitProp } =
@@ -72,7 +73,7 @@ const RegisterForm = (props) => {
                 }) => {
                     return (
                         <div>
-                            <h1>REGISTRO</h1>
+                            {/* <h1>REGISTRO</h1> */}
                             <Form
                                 className="contact"
                                 method="post"
@@ -164,12 +165,22 @@ const RegisterForm = (props) => {
                                         <p>{errors.confirmPassword}</p>
                                     )}
                                 <br></br>
-                                <button
+{/*                                 <button
                                     type="submit"
                                     disabled={Object.values(errors).length > 0}
                                 >
                                     Registrarse
-                                </button>
+                                </button> */}
+
+                                <Button
+                                    color="primary"
+                                    variant="contained"
+                                    fullWidth
+                                    type="submit"
+                                    disabled={Object.values(errors).length > 0}
+                                >
+                                    Registrarse
+                                </Button>
                             </Form>
                         </div>
                     )

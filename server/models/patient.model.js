@@ -31,27 +31,8 @@ const PatientSchema = new mongoose.Schema(
             required: [true, 'DOB is required'],
             minlength: [8, 'DOB must be 8 characters or longer'],
         },
-        date_toma: {
-            type: String,
-            required: [false, 'Date_toma is required'],
-            minlength: [8, 'Date_toma must be 8 characters or longer'],
-        },
-        date_recep: {
-            type: String,
-            required: [false, 'date_recep is required'],
-            minlength: [8, 'date_recep must be 8 characters or longer'],
-        },
-        result: {
-            type: String,
-            required: [false, 'result is required'],
-            minlength: [8, 'result must be 8 characters or longer'],
-        },
-        next_pap: {
-            type: String,
-            required: [false, 'Next_pap is required'],
-            minlength: [8, 'Next_pap must be 8 characters or longer'],
-        },
         createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+        paps: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Pap' }],
     },
     { timestamps: true },
 )

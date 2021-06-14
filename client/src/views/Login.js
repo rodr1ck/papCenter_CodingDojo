@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useUser } from '../contexts/userContext'
+import { Card } from 'antd'
+
 import {
     BrowserRouter as Router,
     Switch,
@@ -9,12 +12,15 @@ import {
     useHistory,
 } from 'react-router-dom'
 import LoginForm from '../components/LoginForm'
-import { useUser } from '../contexts/userContext'
+import { Redirect } from 'react-router'
 
 const Login = () => {
     const [errors, setErrors] = useState([])
     const { setUser } = useUser()
     const history = useHistory()
+
+    const { user } = useUser()
+    if (user) return <Redirect to="/dashboard" />
 
     const loginUser = (user) => {
         axios
@@ -22,17 +28,17 @@ const Login = () => {
             .then((res) => {
                 console.log('Usuario loggueado')
                 console.log(res.data)
-                
-                axios.get(`/api/user/${res.data._id}`, {withCredentials: true})
-                .then(res=>{
-                    setUser(res.data);
-                    history.push("/dashboard");
-                })
-                .catch(err=>{
-                    console.error(err);
-                    return { success: false, data: err.message };
-                })
-                
+
+                axios
+                    .get(`/api/user/${res.data._id}`, { withCredentials: true })
+                    .then((res) => {
+                        setUser(res.data)
+                        history.push('/dashboard')
+                    })
+                    .catch((err) => {
+                        console.error(err)
+                        return { success: false, data: err.message }
+                    })
             })
             .catch((err) => {
                 console.log(err.response.data)
@@ -48,14 +54,17 @@ const Login = () => {
     }
 
     return (
-        <div>
-            {errors.map((err, index) => (
-                <div className="alert alert-danger" role="alert">
-                    {err}
-                </div>
-            ))}
-            <LoginForm onSubmitProp={loginUser} />
-        </div>
+        <Card className="my-card" title="BIENVENIDO A PAP CENTER">
+            <Card style={{ marginTop: 16 }} type="inner" title="Login">
+                {errors.map((err, index) => (
+                    <div className="alert alert-danger" role="alert">
+                        {err}
+                    </div>
+                ))}
+                <LoginForm onSubmitProp={loginUser} />
+                <Link to="/register">{"Don't have an account? Sign Up"}</Link>
+            </Card>
+        </Card>
     )
 }
 
